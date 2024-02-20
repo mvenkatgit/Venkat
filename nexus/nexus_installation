@@ -250,4 +250,20 @@ use of API
 ###########
 
 programatically perfoming the activities 
+---------------------------------------------------------------------------------------
+403 forbiden
+400 -- bad request which means from our side doing wrong
+404 -- that's not found  
+
+maven2proxy
+
+#############
+
+when we are 
+
+<!--  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+-->     allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+</Context>
+[root@ip-172-31-10-63 META-INF]#
 
