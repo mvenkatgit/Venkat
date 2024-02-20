@@ -1,0 +1,131 @@
+Java application servers
+
+WebSphere Application server --> IBM
+WebSphere Liberty Profile
+WebLogin --> Bea --> Oracle (Oracle weblogin)
+
+
+
+1.X to 7.x --> JBoss
+8.X to till the latest version --> wildfly
+JBoss/Wildfly
+##########################################
+
+JBoss/Wildfly is founder of Redhat Redhat is occupaid by IBM
+
+Tomcat is occupaid by Apache
+
+Maven also is founder by Apache
+###################################################
+
+
+Apache Tomcat is an open source , Java Based, Web Application server
+
+Web Application server's ?
+##########################
+
+in application we can deploy only .war files 
+
+
+
+bin
+
+startup.sh
+startup.bat
+
+shutdown.sh
+shutdown.bat
+
+version.sh
+version.bat
+
+
+#########################################
+
+conf
+
+tomcat-usser.xml file
+server.xml file
+lib :
+#####
+library files
+jar files
+################
+
+logs
+####
+catalina.out
+manager.log
+hostnamanger.log
+localhost.log
+
+webapps
+#######
+5 default apps
+
+we will see in webapps directory those war files
+
+
+
+work direcrory
+##############
+
+temp
+####
+temporary files we can keep it here
+
+
+if we want to modify the port number we can do in server.xml
+it's located in 68th line number
+
+
+
+Reserved ports 
+1-1024 --> we should'nt user these ports
+HTTP : 80
+HTTPS : 443
+SSH - 22
+FTP - 21
+SMTP - 25
+
+1025 to 65535 we can use
+
+we can increase heap size like below
+
+
+
+
+Web Servers				App servers
+#########				############
+Apache HTTP server
+Nginx (Engine X)
+IHS - IBM HTTP Server
+Oracle Iplanet
+
+
+Deploy static content			Deploy backend logic -- process the busines logic
+HTML
+CSS
+JS
+Images
+it can be used as a proxy user
+Load balancing server
+
+
+route rabier algaridham
+
+
+/opt/apache-tomcat-10.1.18/webapps/manager/META-INF
+[root@ip-172-31-10-63 META-INF]#
+
+
+we should comment the context file in below path to access the web application
+
+/opt/apache-tomcat-10.1.18/webapps/manager/META-INF
+[root@ip-172-31-10-63 META-INF]#
+
+
+like below
+
+if we get 
+
