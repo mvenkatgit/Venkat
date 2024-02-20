@@ -1,0 +1,317 @@
+sGit is a source code management tool or version control tool 
+
+
+GitHub
+Gitlab
+Bitbucket
+SVN --> (Subversion)
+CVS --> Concurrent Version
+TFS --> Team Foundation server
+############################################################################
+
+
+Repository : The place where we can store the source code or contributing place 
+###############################################################################
+
+Create an organization 
+
+Create a Repository
+
+Create a Team
+
+Add the users to the team
+
+Repo Access to the Team
+#####################
+
+if we have two repositary we can provide the access by using organization
+###########################################################################
+
+https://github.com/HarshaVenkatTechnologies/Management-tool-Repo.git (HTTPS)
+git@github.com:HarshaVenkatTechnologies/Management-tool-Repo.git (SSH)
+###########################################################################
+
+
+We can rename the organization name as well
+settings rename organization
+
+############################################################################
+
+Second Repo
+##########
+https://github.com/HarshaVenkatTechnologies/Second-Repository.git (HTTPS) 404 error code
+
+git@github.com:HarshaVenkatTechnologies/Second-Repository.git (SSH)
+
+#############################################################################
+Team URL : https://github.com/orgs/HarshaVenkatTechnologies/teams/harsha-venkat-team
+###################################################################################
+
+HarshaVenkatTechnologies (Organization name)
+
+Management-Tool (Repository)
+
+Management Team (Team)
+########################################################################################
+
+git config --global user.name "Username"
+git config --global user.email "email"
+############################################
+git config --list
+git config --global --list
+git config --global --edit
+#################################################################
+
+git merge master
+
+
+git show --pretty <commit id>
+git show --pretty="" --name-only <commit id>
+#######################################################################
+
+git log -2 (it will display last two logs)
+#################################################
+
+we can add the file and commit once without adding step with one command
+git commit -a -m "commit message"
+################################################################
+
+(HEAD -> main (it means it's up to date it should navigate to the lastest commit id)
+#####################################################################
+
+key chain access (for to store the token)
+cridential manager ( for windows to store this token)
+#########################################################################
+
+diffrence between 
+git branch -d branchname (if it's merged it will work)
+git branch -D branchname (if not merged it wil work)
+#####################
+ git show --pretty --only-one 56b0b9d8f74a6c41ac9eb96d6fe50e4f5e599fcb
+############################################################
+
+f
+git reset file.txt
+git restore <file>.. (it will restore back the file discard the changes ) (it will work only for exisiting file)
+
+################################################################
+
+below is the command to rename the branch 
+##########################################
+git branch -m <old_branch_name> <new_branch_name>
+
+
+#####################################################################
+
+git restore (it's working only for exisiting files)
+git revert (both are same) (we can use to remove from Remote repo as well )
+git reset (it will revert the changes from stagig area to working area)
+#########################################################
+
+when file is removed we can do below steps :
+   rm -rf file.txt
+   git add .
+   git commit -m "removed a file"
+
+###########################################################
+
+when we create a files and if we want to clean them we can use below commands
+
+git clean -n (for preview)
+git clean -f (for force remove)
+#######################################################
+
+gitignore (when developer is working with his project that will may generate the file )
+.class
+.modules
+those files can we added into gitignore files so that those will not be tracked 
+########################################################
+
+
+once we commit the code then itself we can swithc the another branch
+##############################################################
+
+git diff main
+git diff march_07_2
+#########################################################
+
+
+merge
+
+Hello this is the new line in master branch..
+======
+hello this line is upated in dev branch
+>>>>>>> development
+Hello Guys
+
+db logic added.
+
+(above example which is mentioned till ======= that's main branch code which is after that is another branch code)
+##################################################################
+
+git push origin --all (to push the code to all the branches)
+
+
+
+alias name will be same for all the repositories
+
+we can't delte the current branch
+
+if we want to be set as a default branch
+###################################################
+
+
+peer to peer code review
+----------------------------
+
+
+Branch							Tag
+###########					#################
+
+
+Branch is mutable 					Tag is immutable
+git branch <branch name>				git tag <tag name>
+git branch						git tag
+git branch -d <branch name>				git tag -d <tag name>
+							----- we can use tag from another branches also
+version
+#######
+v1.0.0 
+1 (it represents major)
+0.(minor)
+0 (batch)
+#######################################################
+
+below is the comman to delte the tags in remote repo
+
+git push --delete origin v1.0
+
+
+there are two types of tags
+##############################
+light weight tag
+annoate tags
+
+
+command for annoate tag
+
+git tag -a v1.1 -m "annoated tag v1.1"
+#####################################################################
+
+stpes to rename the branch
+git branch -m old_branch new_branch
+
+git branch -m new_branch
+
+git push origin --delete old_branch
+git push origin new_branch
+
+without commit we should not swith to the another branch
+###################################################################
+git stash save <comments>
+
+git stash (taking back up) thi scenario is for when we are working on something on one branch without completing the code we shoul'nt suppose to switch the another branch then we have a option to save those without commit 
+
+
+git stash list
+git stash apply
+git stash@{0}
+git stash@{1}
+git stash@{2}
+git stash@{3}
+
+
+git stash apply (it's for to release the modifications i mean ready to contiou)
+
+git stash drop
+git stash pop (it release the most recent saved data)
+
+master branch
+
+DC1 DC2 DC3 DC4
+####################################################
+
+git cherry-pick 
+
+################
+
+master git cherry-pick <commit id>
+
+
+if we want to merge only one commit id we can use git cherry-pick below are the steps for this 
+
+
+in Development branch we modified few files like below
+
+file1.txt
+file2.txt
+if we want to merge one file we can get the git log files<commit id's> then switch to main branch and follow below command
+
+git cherr-pick <commit id>
+###########################################################################################
+403 forbidden
+401 unauthroized
+#############################################################
+git fetch and git pull
+######################
+
+git pull 
+
+git pull = git fetch + git merge origin main
+git fetch (it will get the code into the local repo but it does not update the code)
+
+
+rsa is a encrypt algaridham
+(Rivest-Shamir-Adleman)
+############################
+
+ssh-keygen -t dsa (t means type of algaridham)
+
+dsa  (Digital Signature Algorithm) 
+
+##################################
+
+
+ssh config file for active 
+
+Host *
+    ServerAliveInterval 120
+
+
+
+
+ssh -T git@github.com
+##################################################################
+
+git remote add name <remote url>
+git remote add origin <remote url>
+
+in a repository for ssh and https both alias names should'nt be the same 
+
+
+apache jmeter to test the application
+
+
+Readme file contains about repository
+
+(Rebase is pending)
+
+
+git commit --amend -m "TaskNo - Login feature"
+
+
+
+git rebase
+
+
+asume like in development branch we have done commit1 commit2 commit3 
+
+if we swith to main branch and merge them it will come as a one commit if we use rebase it will come as  all the commit messgages\
+
+
+git push origin --tags
+
+(tags is like a creating zip files)
+
+
+
