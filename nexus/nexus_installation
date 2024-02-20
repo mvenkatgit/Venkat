@@ -1,0 +1,253 @@
+Sonatype Nexus
+##############
+
+Nexus is an OSS, Java based../ artifact repo manager.
+
+we can store the artifatcs/ packages and retrive and build artifacts whenever it required.
+
+
+Nexus pro --> extra features required a license 
+sudo rm -rf /tmp/nexus*
+
+
+what is the diffrence between git hub and nexus?
+
+we can't store build packages in git hub we can store as a folder ?
+
+why we are not storing ?
+
+
+we can't manage the versions 
+we diffecult to retrive the packages 
+
+
+nexus OSS (open source software)
+
+
+Java - jar,war and ear
+Docker -- Docker Images
+Node Js -- tar
+Redhat -- rpm
+
+
+k8s,grafan,pro,elk
+###############################
+
+sudo yum install java-1.8.0-openjdk-devel
+java -version
+export INSTALL4J_JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+
+sudo su -
+cd /opt
+yum install tar wget -y
+wget http://download.sonatype.com/nexus/3/nexus-3.15.2-01-unix.tar.gz
+tar -zxvf nexus-3.15.2-01-unix.tar.gz
+mv /opt/nexus-3.15.2-01 /opt/nexus
+useradd nexus
+visudo
+nexus ALL=(ALL) NOPASSWD: ALL
+chown -R nexus:nexus /opt/nexus
+chown -R nexus:nexus /opt/sonatype-work
+chmod -R 775 /opt/nexus
+chmod -R 775 /opt/sonatype-work
+
+vi /opt/nexus/bin/nexus.rc
+run_as_user="nexus"
+ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
+sudo su - nexus
+sudo systemctl enable nexus
+sudo systemctl start nexus
+sudo systemctl start nexus
+
+
+
+tomcat /jboss/wildfly/jenkins --> 8080 is the default port number
+
+to disable anonymous access we can go to the settings and check mark the option 
+
+
+nexus-default.properties --> we can change the port numbers here
+for tomcat server.xml we can change the port number
+
+
+harshatechnologies for context
+
+
+maven2 option under repositories
+
+http://3.129.207.191:8082/harshaproject/repository/harsha_nexus_repo_snapshot/
+http://3.129.207.191:8082/harshaproject/repository/harsha_repo_nexus_release_repo/
+
+we should select either snapshot or release
+
+how to integrate with maven
+pom.xml
+
+<distributionManagement>
+
+</distributionManagement>
+
+nexus repo details in pom.xml 
+credentials details we should mention in settings.xml
+com/mt/maven-web-application/0.0.1-SNAPSHOT/maven-web-application-0.0.1-20230412.081526-1.war
+
+
+
+
+ <groupId>com.mt</groupId>
+        <artifactId>maven-web-application</artifactId>
+        <packaging>war</packaging>
+        <version>2.0.2 RELEASE</version>
+
+
+
+we should mention if we required snapshot or release we should mention along with version
+
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+
+        <groupId>com.mt</groupId>
+        <artifactId>maven-web-application</artifactId>
+        <packaging>war</packaging>
+        <version>2.0.2 RELEASE</version>
+
+        <name>maven-web-application</name>
+
+#############################################################################################
+
+under properties tag we should mention sonarqube details 
+
+
+ <properties>
+                <jdk.version>1.8</jdk.version>
+                <spring.version>5.1.2.RELEASE</spring.version>
+                <junit.version>4.11</junit.version>
+                <log4j.version>1.2.17</log4j.version>
+                <sonar.host.url>http://3.142.152.150:9000/</sonar.host.url>
+                <!--
+                <sonar.login>admin</sonar.login>
+                <sonar.password>password</sonar.password>
+                -->
+                <sonar.login>squ_a99622c37f2323ee7c7077d1e74f1121a8cdbab9</sonar.login>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        </properties>
+
+######################################################################
+
+ <distributionManagement>
+
+            <repository>
+              <id>nexus</id>
+              <name>Harsha Technologies Releases Nexus Repository</name>
+              <url>http://3.129.207.191:8082/harshaproject/repository/harsha_repo_nexus_release_repo/</url>
+            </repository>
+
+            <snapshotRepository>
+              <id>nexus</id>
+              <name>Harsha Technologies Snapshot Nexus Repository </name>
+              <url>http://3.129.207.191:8082/harshaproject/repository/harsha_nexus_repo_snapshot/</url>
+            </snapshotRepository>
+
+        </distributionManagement>
+###################################################################################
+
+Under distributionManagement we should keep nexus details 
+################################################################################
+if already existing release is there build will get failed 
+####################################################
+
+in release we should'nt aand we can't deploy same version more than 1 time 
+
+for snapshot we can 
+
+to deploy same version multiple times we can check mark under repo 
+
+
+###########################################################
+
+ <groupId>com.mt</groupId>
+        <artifactId>maven-web-application</artifactId>
+        <packaging>war</packaging>
+        <version>4.0-RELEASE</version>
+
+mvn deploy:deployfile 
+mvn deploy:deploy-file -DgroupId=com.harsha -DartifactId=harsha-project -Dversion=6.0 -Dpackaging=jar -Dfile=/root/hrshaproject/hrshaproject-frontend/target/hrshaproject-frontend-2.0.jar -Durl=http://3.129.207.191:8082/harshaproject/repository/Harsha_remote_repo/ -DrepositoryId=nexus
+
+ mvn deploy:deploy-file -DgroupId=com.harsha -DartifactId=harsha-project -Dversion=7.0 -Dpackaging=jar -Dfile=/root/maven-web-application/src/log4j-1.2.12.jar -Durl=http://3.129.207.191:8082/harshaproject/repository/Harsha_venkat_repo_jar/ -DrepositoryId=nexus
+
+this is the command to upload a single jar or war ear files
+
+
+
+local repo --> central repo --> remote repo
+it should be before dependencies tag
+
+<repositories>
+  <repository>
+    <id>nexus<id/>
+    <url>http://3.129.207.191:8082/harshaproject/repository/Harsha_remote_repo/<url/>
+   </repository>
+</repositories>
+
+
+
+under mirror tag in settings.xml it's confg for when we trying to download from remote repo
+
+#################  Could not find artifact org.apache.maven.plugins.maven 
+
+      <mirror>
+        <id>nexus</id>
+        <mirrorof>external:httpd:*</mirrorof>
+        <name>MSS Remote Repo</name>
+        <url>http://3.129.207.191:8082/harshaproject/repository/Harsha_remote_repo/</url>
+       </mirror>
+      </mirrors>
+
+#################################
+
+when we are going to use maven2 proxy
+####################################
+
+required dependencies will down load from Maven local repo if not avaible it will go to maven central repo
+
+
+--> basically it does it will check it in Local if not will go to the proyx server proxy will get the dependencies from there will be used if any wires we will block it them on proxy server
+
+--> In Sonatype Nexus, blob storage refers to the storage of binary files or artifacts that are uploaded to the repository manager
+
+s3 means --> SSS (simple storeage service)
+EC2 --> ECC (elastic cloud computing)
+
+
+/opt/sonatype-work/nexus3/blobs/Blob_storage_harsha
+
+absolute path for blob storage while createing it we will have this path
+
+
+clean up policy
+###############
+
+clean up policy it's for to clean the repository
+options 
+
+components age (365)
+components which are not downloaded (700 days)
+components which were republished 3 days ago
+if we want to run it manually we can go to settings we can run the task
+
+
+we can create a users with annonumus 
+
+
+access part mapped with LDAP 
+
+use of API  
+###########
+
+programatically perfoming the activities 
+
