@@ -1,0 +1,190 @@
+Code Review : Verifying the code against the standards
+
+Code Coverage : How many lines of source code is tested by unit test cases
+
+Employeeservice.java
+100 lines 
+
+
+
+90 % code coverage
+80 % should get pass
+
+
+it's a code quality management tool
+continuous code quality
+
+it's open source for some languages 
+
+cross platform means it can be executed in any platform
+
+#######################################################################
+
+
+sonarqube (previously called sonar) is an open source software quality management tool
+it will continously analyze and measures quality of the source ce
+it will generate the report if any issues in html format / pdf format
+it is a web based tool supports multiple lanaguages (java, C#, Js..)
+it will support multi OS platfome (Windowsx`, MAC, Linux..)
+it will support multiple databases (My sql, Oracle, Microsoft SQL server, Postgretsql)
+supports multiple browsers (IE, Microsoft Edge, FF, Chrome,safar)
+it will identifies the below catefory of issues,
+
+
+Duplicated code
+Coding standards
+Unit tests
+Complex code
+comments
+potential Bugs
+Architecture & Design
+
+
+
+
+Relatinal Databases (bank)
+###################
+
+Oracle
+MY SQL server
+
+my sql
+postgre sql
+
+tables 
+######
+rows and columns
+
+
+No SQL DBs
+##########
+
+Mongo DB
+Un structed
+Json Format
+Documents
+
+
+3 tier UI
+
+
+
+
+
+
+complex code means should'nt be same formula's 
+
+above 20 langues
+
+
+Java 1.8 X required
+Sonarqube 7.8
+
+Sonarqube 7.9 to 9X java 11 supports 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sonarqube scanner
+#################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sonarqube server
+###################
+
+compute engine
+it does varnabulities 
+Bugs
+Code smells
+
+sonarqube server generates the report and it stores in the data base
+in built data base called H2 in sonarqube 
+
+
+web server it's going to get the report and it will show by using webserver as a default
+
+
+Search enginee one of the component to get something in sonarqub server
+
+
+######################################################
+
+sonarqube we need to start it as a sonar user 
+
+
+####we should mention the sonar credentials in pom.xml under properties
+
+
+to generate the mvn package
+mvn sonar:sonar
+
+
+
+sonar:sonar {first sonar is for plugin name second sonar is goal name}
+sqa_436492b7d6e33cdd3b737b1f30bab2f294480224
+
+ <sonar.login>sqa_7658a94730c8e09b9e6a11b9ab7fdf2c5ef8bbee</sonar.login>
+
+one sonar token can be used for only one time
+
+npm run sonar
+or node sonar-project.js
+
+to run node js project's
+
+
+instead of pom.xml we should use sonar-project.js file to modify for ip address of sonar
+
+to install 
+yum install nodejs -y
+install npm
+
+
+HAMEVh#%%195
+HAMEVv#%%195
+
+
+to add extra rules we should add under quality profiles tab
+
+
+when we add the custome rules we can specify as a default by clicking in settings symbol 
+
+
+quality gates : collections of conditions 
+
+
+we can change the port number in /conf/sonar.properties 
+
+
+sonar.projectName=harsha
+sonar.projectKey=com.hr
+sonar.projectversion=1.0
+sonar.source=src
